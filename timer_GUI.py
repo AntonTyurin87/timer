@@ -34,7 +34,7 @@ class Ui_Timer(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.progressBar.setFont(font)
-        self.progressBar.setProperty("value", 24)
+        self.progressBar.setProperty("value", 80)
         self.progressBar.setObjectName("progressBar")
         self.timeEdit = QtWidgets.QTimeEdit(self.centralwidget)
         self.timeEdit.setGeometry(QtCore.QRect(20, 100, 118, 31))
@@ -68,7 +68,7 @@ class Ui_Timer(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.progressBar_2.setFont(font)
-        self.progressBar_2.setProperty("value", 24)
+        self.progressBar_2.setProperty("value", 25)
         self.progressBar_2.setObjectName("progressBar_2")
         self.timeEdit_2 = QtWidgets.QTimeEdit(self.centralwidget)
         self.timeEdit_2.setGeometry(QtCore.QRect(20, 190, 118, 31))
@@ -90,7 +90,7 @@ class Ui_Timer(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.progressBar_3.setFont(font)
-        self.progressBar_3.setProperty("value", 24)
+        self.progressBar_3.setProperty("value", 40)
         self.progressBar_3.setObjectName("progressBar_3")
         self.timeEdit_3 = QtWidgets.QTimeEdit(self.centralwidget)
         self.timeEdit_3.setGeometry(QtCore.QRect(20, 280, 118, 31))
@@ -110,8 +110,10 @@ class Ui_Timer(object):
         font.setPointSize(16)
         self.pushButton_4.setFont(font)
         self.pushButton_4.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122);\n"
+        self.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);\n"
+"background-color: rgb(51, 209, 122);\n"
 "background-color: rgb(222, 221, 218);\n"
+"\n"
 "")
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)

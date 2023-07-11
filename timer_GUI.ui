@@ -67,7 +67,7 @@ background-color: rgb(222, 221, 218);</string>
      </font>
     </property>
     <property name="value">
-     <number>24</number>
+     <number>80</number>
     </property>
    </widget>
    <widget class="QTimeEdit" name="timeEdit">
@@ -159,7 +159,7 @@ background-color: rgb(222, 221, 218);</string>
      </font>
     </property>
     <property name="value">
-     <number>24</number>
+     <number>25</number>
     </property>
    </widget>
    <widget class="QTimeEdit" name="timeEdit_2">
@@ -215,7 +215,7 @@ background-color: rgb(222, 221, 218);</string>
      </font>
     </property>
     <property name="value">
-     <number>24</number>
+     <number>40</number>
     </property>
    </widget>
    <widget class="QTimeEdit" name="timeEdit_3">
