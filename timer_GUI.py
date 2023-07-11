@@ -25,6 +25,9 @@ class Ui_Timer(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("background-color: rgb(46, 194, 126);\n"
+"background-color: rgb(245, 194, 17);\n"
+"background-color: rgb(222, 221, 218);")
         self.pushButton.setObjectName("pushButton")
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(300, 100, 118, 31))
@@ -56,6 +59,9 @@ class Ui_Timer(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.pushButton_2.setFont(font)
+        self.pushButton_2.setStyleSheet("background-color: rgb(46, 194, 126);\n"
+"background-color: rgb(245, 194, 17);\n"
+"background-color: rgb(222, 221, 218);")
         self.pushButton_2.setObjectName("pushButton_2")
         self.progressBar_2 = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar_2.setGeometry(QtCore.QRect(300, 190, 118, 31))
@@ -75,6 +81,9 @@ class Ui_Timer(object):
         font = QtGui.QFont()
         font.setPointSize(16)
         self.pushButton_3.setFont(font)
+        self.pushButton_3.setStyleSheet("background-color: rgb(46, 194, 126);\n"
+"background-color: rgb(245, 194, 17);\n"
+"background-color: rgb(222, 221, 218);")
         self.pushButton_3.setObjectName("pushButton_3")
         self.progressBar_3 = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar_3.setGeometry(QtCore.QRect(300, 280, 118, 31))
@@ -101,7 +110,9 @@ class Ui_Timer(object):
         font.setPointSize(16)
         self.pushButton_4.setFont(font)
         self.pushButton_4.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pushButton_4.setStyleSheet("vertical-align: center;")
+        self.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122);\n"
+"background-color: rgb(222, 221, 218);\n"
+"")
         self.pushButton_4.setObjectName("pushButton_4")
         self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_5.setGeometry(QtCore.QRect(20, 340, 401, 41))

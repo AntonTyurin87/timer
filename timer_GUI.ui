@@ -43,6 +43,11 @@
       <pointsize>16</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(46, 194, 126);
+background-color: rgb(245, 194, 17);
+background-color: rgb(222, 221, 218);</string>
+    </property>
     <property name="text">
      <string>Начать</string>
     </property>
@@ -130,6 +135,11 @@
       <pointsize>16</pointsize>
      </font>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(46, 194, 126);
+background-color: rgb(245, 194, 17);
+background-color: rgb(222, 221, 218);</string>
+    </property>
     <property name="text">
      <string>Начать</string>
     </property>
@@ -180,6 +190,11 @@
      <font>
       <pointsize>16</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(46, 194, 126);
+background-color: rgb(245, 194, 17);
+background-color: rgb(222, 221, 218);</string>
     </property>
     <property name="text">
      <string>Начать</string>
@@ -254,7 +269,9 @@
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">vertical-align: center;</string>
+     <string notr="true">background-color: rgb(51, 209, 122);
+background-color: rgb(222, 221, 218);
+</string>
     </property>
     <property name="text">
      <string>Старт/Финиш</string>
