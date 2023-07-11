@@ -269,8 +269,10 @@ background-color: rgb(222, 221, 218);</string>
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(51, 209, 122);
+     <string notr="true">background-color: rgb(237, 51, 59);
+background-color: rgb(51, 209, 122);
 background-color: rgb(222, 221, 218);
+
 </string>
     </property>
     <property name="text">

@@ -66,10 +66,10 @@ def on_click_button_4(): # Кнопка Старт/Финиш
         start_count_minute = datetime.now().time().minute
         
 
-        print(datetime.now().time().hour.minute)
+        print(datetime.now().time().hour)
 
     elif counter_start == 1:
-        form.pushButton_4.setStyleSheet("background-color: rgb(222, 221, 218)")
+        form.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);")
         counter_start = 0
     
 
