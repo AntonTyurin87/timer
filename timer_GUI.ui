@@ -57,7 +57,7 @@ background-color: rgb(222, 221, 218);</string>
      <rect>
       <x>300</x>
       <y>100</y>
-      <width>118</width>
+      <width>120</width>
       <height>31</height>
      </rect>
     </property>
@@ -67,7 +67,7 @@ background-color: rgb(222, 221, 218);</string>
      </font>
     </property>
     <property name="value">
-     <number>80</number>
+     <number>0</number>
     </property>
    </widget>
    <widget class="QTimeEdit" name="timeEdit">
@@ -83,6 +83,16 @@ background-color: rgb(222, 221, 218);</string>
      <font>
       <pointsize>16</pointsize>
      </font>
+    </property>
+    <property name="dateTime">
+     <datetime>
+      <hour>3</hour>
+      <minute>30</minute>
+      <second>0</second>
+      <year>2000</year>
+      <month>1</month>
+      <day>1</day>
+     </datetime>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -149,7 +159,7 @@ background-color: rgb(222, 221, 218);</string>
      <rect>
       <x>300</x>
       <y>190</y>
-      <width>118</width>
+      <width>120</width>
       <height>31</height>
      </rect>
     </property>
@@ -159,7 +169,7 @@ background-color: rgb(222, 221, 218);</string>
      </font>
     </property>
     <property name="value">
-     <number>25</number>
+     <number>0</number>
     </property>
    </widget>
    <widget class="QTimeEdit" name="timeEdit_2">
@@ -175,6 +185,16 @@ background-color: rgb(222, 221, 218);</string>
      <font>
       <pointsize>16</pointsize>
      </font>
+    </property>
+    <property name="dateTime">
+     <datetime>
+      <hour>4</hour>
+      <minute>30</minute>
+      <second>0</second>
+      <year>2000</year>
+      <month>1</month>
+      <day>1</day>
+     </datetime>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -205,7 +225,7 @@ background-color: rgb(222, 221, 218);</string>
      <rect>
       <x>300</x>
       <y>280</y>
-      <width>118</width>
+      <width>120</width>
       <height>31</height>
      </rect>
     </property>
@@ -215,7 +235,7 @@ background-color: rgb(222, 221, 218);</string>
      </font>
     </property>
     <property name="value">
-     <number>40</number>
+     <number>0</number>
     </property>
    </widget>
    <widget class="QTimeEdit" name="timeEdit_3">
@@ -231,6 +251,16 @@ background-color: rgb(222, 221, 218);</string>
      <font>
       <pointsize>16</pointsize>
      </font>
+    </property>
+    <property name="dateTime">
+     <datetime>
+      <hour>0</hour>
+      <minute>45</minute>
+      <second>0</second>
+      <year>2000</year>
+      <month>1</month>
+      <day>1</day>
+     </datetime>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
