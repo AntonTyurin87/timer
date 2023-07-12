@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Timer_script
+Exec=scripts/timer.sh
+Type=Application
+Icon=repositories/timer/pictures/sekund-64x64.png
+Comment=
+GenericName=
+Keywords=
+Terminal=false
+Path=
+Categories=
+NoDisplay=false
