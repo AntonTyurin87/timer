@@ -17,6 +17,7 @@ work_time_pass = 0
 studies_time_pass = 0
 rest_time_pass = 0
 
+start_time = [datetime.now().time().hour, datetime.now().time().minute]
 start_minutes = start_time[0] * 60 + start_time[1]
 
 def button_work_on():
