@@ -87,7 +87,7 @@ background-color: rgb(222, 221, 218);</string>
     <property name="dateTime">
      <datetime>
       <hour>3</hour>
-      <minute>30</minute>
+      <minute>0</minute>
       <second>0</second>
       <year>2000</year>
       <month>1</month>
@@ -188,8 +188,8 @@ background-color: rgb(222, 221, 218);</string>
     </property>
     <property name="dateTime">
      <datetime>
-      <hour>4</hour>
-      <minute>30</minute>
+      <hour>5</hour>
+      <minute>0</minute>
       <second>0</second>
       <year>2000</year>
       <month>1</month>
