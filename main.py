@@ -17,8 +17,11 @@ work_time_pass = 0
 studies_time_pass = 0
 rest_time_pass = 0
 
-start_time = [datetime.now().time().hour, datetime.now().time().minute]
-start_minutes = start_time[0] * 60 + start_time[1]
+#start_time = [datetime.now().time().hour, datetime.now().time().minute]
+
+def start_time():
+     global start_minutes
+     start_minutes = datetime.now().time().hour * 60 + datetime.now().time().minute
 
 
 def button_work_on():
@@ -42,8 +45,8 @@ def button_rest_on():
 def on_click_work():  # Кнопка "Рабочее время"
     global start_time, work_plane_minutes
     button_work_on()
-
-    start_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time()
+    #start_time = [datetime.now().time().hour, datetime.now().time().minute]
     work_plane_minutes = (int(form.timeEdit.time().toString('hh')) * 60
                           + int(form.timeEdit.time().toString('mm')))
 
@@ -61,7 +64,8 @@ def on_click_work():  # Кнопка "Рабочее время"
 def on_click_studies():  # Кнопка "Учебное время"
     global start_time, studies_plane_minutes
     button_studies_on()
-    start_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time()
+    #start_time = [datetime.now().time().hour, datetime.now().time().minute]
     studies_plane_minutes = (int(form.timeEdit_2.time().toString('hh')) * 60
                              + int(form.timeEdit_2.time().toString('mm')))
 
@@ -79,7 +83,8 @@ def on_click_studies():  # Кнопка "Учебное время"
 def on_click_rest():  # Кнопка "Отдых"
     global start_time, rest_plane_minutes
     button_rest_on()
-    start_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time()
+    #start_time = [datetime.now().time().hour, datetime.now().time().minute]
     rest_plane_minutes = (int(form.timeEdit_3.time().toString('hh')) * 60
                           + int(form.timeEdit_3.time().toString('mm')))
 
