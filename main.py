@@ -19,16 +19,16 @@ rest_time_pass = 0
 
 
 def on_click_work():  # Кнопка "Рабочее время"
-    global start_work_time, time_work_plane
+    global start_time, time_work_plane
     form.pushButton.setStyleSheet("background-color: rgb(46, 194, 126)")
     form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
     form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
 
     time_work_plane = [int(form.timeEdit.time().toString('hh')), int(form.timeEdit.time().toString('mm'))]
-    start_work_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time = [datetime.now().time().hour, datetime.now().time().minute]
 
     if work_time_pass != 0:
-        start_work_time[1] -= work_time_pass
+        start_time[1] -= work_time_pass
 
     counter_work_time()
 
@@ -39,17 +39,17 @@ def on_click_work():  # Кнопка "Рабочее время"
 
 
 def on_click_studies():  # Кнопка "Учебное время"
-    global start_studies_time, time_studies_plane
+    global start_time, time_studies_plane
     form.pushButton_2.setStyleSheet("background-color: rgb(46, 194, 126)")
     form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
     form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
 
     time_studies_plane = [int(form.timeEdit_2.time().toString('hh')),
                           int(form.timeEdit_2.time().toString('mm'))]
-    start_studies_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time = [datetime.now().time().hour, datetime.now().time().minute]
 
     if studies_time_pass != 0:
-        start_studies_time[1] -= studies_time_pass
+        start_time[1] -= studies_time_pass
 
     form.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122)")
 
@@ -60,14 +60,17 @@ def on_click_studies():  # Кнопка "Учебное время"
 
 
 def on_click_rest():  # Кнопка "Отдых"
-    global start_rest_time, time_rest_plane
+    global start_time, time_rest_plane
     form.pushButton_3.setStyleSheet("background-color: rgb(46, 194, 126)")
     form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
     form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
 
     time_rest_plane = [int(form.timeEdit_3.time().toString('hh')),
                        int(form.timeEdit_3.time().toString('mm'))]
-    start_rest_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time = [datetime.now().time().hour, datetime.now().time().minute]
+
+    if rest_time_pass != 0:
+        start_time[1] -= rest_time_pass
 
     form.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122)")
 
@@ -96,10 +99,10 @@ def on_click_button_4():  # Кнопка Старт/Финиш
 
 
 def counter_work_time():
-    global t_work, start_work_time, work_time_pass
+    global t_work, start_time, work_time_pass
     work_plane_minutes = time_work_plane[0] * 60 + time_work_plane[1]
     now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
-    start_work_minutes = start_work_time[0] * 60 + start_work_time[1]
+    start_work_minutes = start_time[0] * 60 + start_time[1]
     work_time_pass = now_time_minytes - start_work_minutes
     work_persent = work_time_pass * 100 / work_plane_minutes
     if work_persent > 100:
@@ -111,10 +114,10 @@ def counter_work_time():
 
 
 def counter_studies_time():
-    global t_studies, start_studies_time, studies_time_pass
+    global t_studies, start_time, studies_time_pass
     studies_plane_minutes = time_studies_plane[0] * 60 + time_studies_plane[1]
     now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
-    start_studies_minutes = start_studies_time[0] * 60 + start_studies_time[1]
+    start_studies_minutes = start_time[0] * 60 + start_time[1]
     studies_time_pass = now_time_minytes - start_studies_minutes
     studies_persent = studies_time_pass * 100 / studies_plane_minutes
     if studies_persent > 100:
@@ -126,10 +129,10 @@ def counter_studies_time():
 
 
 def counter_rest_time():
-    global t_rest, start_rest_time, rest_time_pass
+    global t_rest, start_time, rest_time_pass
     rest_plane_minutes = time_rest_plane[0] * 60 + time_rest_plane[1]
     now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
-    start_rest_minutes = start_rest_time[0] * 60 + start_rest_time[1]
+    start_rest_minutes = start_time[0] * 60 + start_time[1]
     rest_time_pass = now_time_minytes - start_rest_minutes
     rest_persent = rest_time_pass * 100 / rest_plane_minutes
     if rest_persent > 100:
