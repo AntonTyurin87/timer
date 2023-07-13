@@ -18,39 +18,14 @@ studies_time_pass = 0
 rest_time_pass = 0
 
 
-def now_time_minutes():
-    return datetime.now().time().hour * 60 + datetime.now().time().minute
-
-
-def start_time():
-     global start_minutes
-     start_minutes = now_time_minutes()
-
-
-def button_work_on():
+def on_click_work():  # Кнопка "Рабочее время"
+    global start_time, time_work_plane
     form.pushButton.setStyleSheet("background-color: rgb(46, 194, 126)")
     form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
     form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
 
-
-def button_studies_on():
-    form.pushButton_2.setStyleSheet("background-color: rgb(46, 194, 126)")
-    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
-    form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
-
-
-def button_rest_on():
-    form.pushButton_3.setStyleSheet("background-color: rgb(46, 194, 126)")
-    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
-    form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
-
-
-def on_click_work():  # Кнопка "Рабочее время"
-    global work_plane_minutes
-    button_work_on()
-    start_time()
-    work_plane_minutes = (int(form.timeEdit.time().toString('hh')) * 60
-                          + int(form.timeEdit.time().toString('mm')))
+    time_work_plane = [int(form.timeEdit.time().toString('hh')), int(form.timeEdit.time().toString('mm'))]
+    start_time = [datetime.now().time().hour, datetime.now().time().minute]
 
     if work_time_pass != 0:
         start_time[1] -= work_time_pass
@@ -64,11 +39,14 @@ def on_click_work():  # Кнопка "Рабочее время"
 
 
 def on_click_studies():  # Кнопка "Учебное время"
-    global studies_plane_minutes
-    button_studies_on()
-    start_time()
-    studies_plane_minutes = (int(form.timeEdit_2.time().toString('hh')) * 60
-                             + int(form.timeEdit_2.time().toString('mm')))
+    global start_time, time_studies_plane
+    form.pushButton_2.setStyleSheet("background-color: rgb(46, 194, 126)")
+    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
+    form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
+
+    time_studies_plane = [int(form.timeEdit_2.time().toString('hh')),
+                          int(form.timeEdit_2.time().toString('mm'))]
+    start_time = [datetime.now().time().hour, datetime.now().time().minute]
 
     if studies_time_pass != 0:
         start_time[1] -= studies_time_pass
@@ -82,11 +60,14 @@ def on_click_studies():  # Кнопка "Учебное время"
 
 
 def on_click_rest():  # Кнопка "Отдых"
-    global rest_plane_minutes
-    button_rest_on()
-    start_time()
-    rest_plane_minutes = (int(form.timeEdit_3.time().toString('hh')) * 60
-                          + int(form.timeEdit_3.time().toString('mm')))
+    global start_time, time_rest_plane
+    form.pushButton_3.setStyleSheet("background-color: rgb(46, 194, 126)")
+    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
+    form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
+
+    time_rest_plane = [int(form.timeEdit_3.time().toString('hh')),
+                       int(form.timeEdit_3.time().toString('mm'))]
+    start_time = [datetime.now().time().hour, datetime.now().time().minute]
 
     if rest_time_pass != 0:
         start_time[1] -= rest_time_pass
@@ -100,10 +81,12 @@ def on_click_rest():  # Кнопка "Отдых"
 
 
 def on_click_button_4():  # Кнопка Старт/Финиш
-    global counter_start
+    global counter_start, start_count_time
+    # print("Clicked Button_4!!!")
     if counter_start == 0:
         form.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122)")
         counter_start = 1
+        start_count_time = [datetime.now().time().hour, datetime.now().time().minute]
     elif counter_start == 1:
         form.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);")
         form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
@@ -116,36 +99,45 @@ def on_click_button_4():  # Кнопка Старт/Финиш
 
 
 def counter_work_time():
-    work_persent = (now_time_minutes() - start_minutes)* 100 / work_plane_minutes
-
+    global t_work, start_time, work_time_pass
+    work_plane_minutes = time_work_plane[0] * 60 + time_work_plane[1]
+    now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
+    start_work_minutes = start_time[0] * 60 + start_time[1]
+    work_time_pass = now_time_minytes - start_work_minutes
+    work_persent = work_time_pass * 100 / work_plane_minutes
     if work_persent > 100:
         form.pushButton.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_work.cancel()
-
     form.progressBar.setProperty("value", work_persent)
     t_work = Timer(10, counter_work_time)
     t_work.start()
 
 
 def counter_studies_time():
-    studies_persent = (now_time_minutes() - start_minutes) * 100 / studies_plane_minutes
-
+    global t_studies, start_time, studies_time_pass
+    studies_plane_minutes = time_studies_plane[0] * 60 + time_studies_plane[1]
+    now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
+    start_studies_minutes = start_time[0] * 60 + start_time[1]
+    studies_time_pass = now_time_minytes - start_studies_minutes
+    studies_persent = studies_time_pass * 100 / studies_plane_minutes
     if studies_persent > 100:
         form.pushButton_2.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_studies.cancel()
-
     form.progressBar_2.setProperty("value", studies_persent)
     t_studies = Timer(10, counter_studies_time)
     t_studies.start()
 
 
 def counter_rest_time():
-    rest_persent = (now_time_minutes() - start_minutes) * 100 / rest_plane_minutes
-
+    global t_rest, start_time, rest_time_pass
+    rest_plane_minutes = time_rest_plane[0] * 60 + time_rest_plane[1]
+    now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
+    start_rest_minutes = start_time[0] * 60 + start_time[1]
+    rest_time_pass = now_time_minytes - start_rest_minutes
+    rest_persent = rest_time_pass * 100 / rest_plane_minutes
     if rest_persent > 100:
         form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_rest.cancel()
-
     form.progressBar_3.setProperty("value", rest_persent)
     t_rest = Timer(10, counter_rest_time)
     t_rest.start()
