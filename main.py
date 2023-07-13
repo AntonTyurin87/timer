@@ -18,14 +18,33 @@ studies_time_pass = 0
 rest_time_pass = 0
 
 
-def on_click_work():  # Кнопка "Рабочее время"
-    global start_time, time_work_plane
+def now_time():
+    return [datetime.now().time().hour, datetime.now().time().minute]
+
+
+def work_button_on():
     form.pushButton.setStyleSheet("background-color: rgb(46, 194, 126)")
     form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
     form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
 
+
+def studies_button_on():
+    form.pushButton_2.setStyleSheet("background-color: rgb(46, 194, 126)")
+    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
+    form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
+
+
+def rest_button_on():
+    form.pushButton_3.setStyleSheet("background-color: rgb(46, 194, 126)")
+    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
+    form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
+
+
+def on_click_work():  # Кнопка "Рабочее время"
+    global start_time, time_work_plane
+    work_button_on()
     time_work_plane = [int(form.timeEdit.time().toString('hh')), int(form.timeEdit.time().toString('mm'))]
-    start_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time = now_time()
 
     if work_time_pass != 0:
         start_time[1] -= work_time_pass
@@ -40,13 +59,10 @@ def on_click_work():  # Кнопка "Рабочее время"
 
 def on_click_studies():  # Кнопка "Учебное время"
     global start_time, time_studies_plane
-    form.pushButton_2.setStyleSheet("background-color: rgb(46, 194, 126)")
-    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
-    form.pushButton_3.setStyleSheet("background-color: rgb(245, 194, 17)")
-
+    studies_button_on()
     time_studies_plane = [int(form.timeEdit_2.time().toString('hh')),
                           int(form.timeEdit_2.time().toString('mm'))]
-    start_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time = now_time()
 
     if studies_time_pass != 0:
         start_time[1] -= studies_time_pass
@@ -61,13 +77,10 @@ def on_click_studies():  # Кнопка "Учебное время"
 
 def on_click_rest():  # Кнопка "Отдых"
     global start_time, time_rest_plane
-    form.pushButton_3.setStyleSheet("background-color: rgb(46, 194, 126)")
-    form.pushButton.setStyleSheet("background-color: rgb(245, 194, 17)")
-    form.pushButton_2.setStyleSheet("background-color: rgb(245, 194, 17)")
-
+    rest_button_on()
     time_rest_plane = [int(form.timeEdit_3.time().toString('hh')),
                        int(form.timeEdit_3.time().toString('mm'))]
-    start_time = [datetime.now().time().hour, datetime.now().time().minute]
+    start_time = now_time()
 
     if rest_time_pass != 0:
         start_time[1] -= rest_time_pass
@@ -81,12 +94,11 @@ def on_click_rest():  # Кнопка "Отдых"
 
 
 def on_click_button_4():  # Кнопка Старт/Финиш
-    global counter_start, start_count_time
+    global counter_start,
     # print("Clicked Button_4!!!")
     if counter_start == 0:
         form.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122)")
         counter_start = 1
-        start_count_time = [datetime.now().time().hour, datetime.now().time().minute]
     elif counter_start == 1:
         form.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);")
         form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
