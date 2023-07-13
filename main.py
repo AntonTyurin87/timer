@@ -111,7 +111,6 @@ def on_click_button_4():  # Кнопка Старт/Финиш
 
 
 def counter_work_time():
-    global t_work, start_time, work_time_pass
     work_plane_minutes = time_work_plane[0] * 60 + time_work_plane[1]
     now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
 
@@ -127,7 +126,6 @@ def counter_work_time():
 
 
 def counter_studies_time():
-    global t_studies, start_time, studies_time_pass
     studies_plane_minutes = time_studies_plane[0] * 60 + time_studies_plane[1]
     now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
 
@@ -143,7 +141,6 @@ def counter_studies_time():
 
 
 def counter_rest_time():
-    global t_rest, start_time, rest_time_pass
     rest_plane_minutes = time_rest_plane[0] * 60 + time_rest_plane[1]
     now_time_minytes = datetime.now().time().hour * 60 + datetime.now().time().minute
 
