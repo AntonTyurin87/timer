@@ -17,15 +17,15 @@ work_time_pass = 0
 studies_time_pass = 0
 rest_time_pass = 0
 
-#start_time = [datetime.now().time().hour, datetime.now().time().minute]
-
-def start_time():
-     global start_minutes
-     start_minutes = datetime.now().time().hour * 60 + datetime.now().time().minute
-
 
 def now_time_minutes():
     return datetime.now().time().hour * 60 + datetime.now().time().minute
+
+
+def start_time():
+     global start_minutes
+     start_minutes = now_time_minutes()
+
 
 def button_work_on():
     form.pushButton.setStyleSheet("background-color: rgb(46, 194, 126)")
