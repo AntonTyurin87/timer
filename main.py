@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication
 from datetime import datetime
 from threading import Timer
 
-Form, Window = uic.loadUiType("timer_GUI.ui")
+Form, Window = uic.loadUiType("timer_GUI_2.ui")
 app = QApplication([])
 window = Window()
 form = Form()
@@ -55,6 +55,7 @@ def on_click_work():  # Кнопка "Рабочее время"
 
     t_studies.cancel()
     t_rest.cancel()
+    
 
 
 def on_click_studies():  # Кнопка "Учебное время"
@@ -146,7 +147,7 @@ def counter_rest_time():
     start_rest_minutes = start_time[0] * 60 + start_time[1]
     rest_time_pass = now_time_minytes - start_rest_minutes
     rest_persent = rest_time_pass * 100 / rest_plane_minutes
-    if rest_persent > 100:
+    if rest_persent >= 100:
         form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_rest.cancel()
     form.progressBar_3.setProperty("value", rest_persent)
@@ -163,5 +164,27 @@ form.pushButton.clicked.connect(on_click_work)
 form.pushButton_2.clicked.connect(on_click_studies)
 form.pushButton_3.clicked.connect(on_click_rest)
 
+
+#form.tabWidget.tabBarClicked.connect(print_qt)
+print(form.tabWidget.tabBarClicked)
+
+def print_qt():
+    print('WORK!')
+
+#if form.tab_2.isVisible():
+    #print_qt()
+
+
+form.tabWidget.tabBarClicked.connect(print_qt) # клик по вкладкам
+
+'''
+def print_qt():
+    print('WORK!')
+
+
+if form.tab_2.isVisible():
+    print_qt()
+
+'''
 
 app.exec_()
