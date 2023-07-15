@@ -11,12 +11,13 @@ form = Form()
 form.setupUi(window)
 window.show()
 
-counter_start = 0  # Счетчик для нажатия на кнопку "Старт/Финиш"
+counter_start = 1  # Счетчик для нажатия на кнопку "Старт/Финиш"
 
 work_time_pass = 0
 studies_time_pass = 0
 rest_time_pass = 0
 
+form.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);")
 
 def now_time():
     return [datetime.now().time().hour, datetime.now().time().minute]
@@ -96,6 +97,7 @@ def on_click_rest():  # Кнопка "Отдых"
 
 def on_click_button_4():  # Кнопка Старт/Финиш
     global counter_start
+    
     if counter_start == 0:
         form.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122)")
         counter_start = 1
