@@ -8,6 +8,7 @@ authors = ["AntonTyurin87 <AntonTyurin87gmail.com>"]
 python = "^3.10"
 PyQt5 = "^5.15.9"
 pyuic5-tool = "^0.0.1"
+openpyxl = "^3.1.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

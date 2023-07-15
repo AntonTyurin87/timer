@@ -3,6 +3,20 @@ from openpyxl import load_workbook
 from datetime import date 
 from datetime import datetime
 
+fn = '/home/anton/repositories/timer/time_stat.xlsx'
+
+wb = load_workbook(fn)
+ws = wb['data']
+ws['A5'] = 'Hello World!'
+
+wb.save(fn)
+wb.close()
+
+
+
+
+
+'''
 if os.path.isfile('/home/anton/repositories/timer/time_stat.xlsx'):
     print('Ok')
 
@@ -74,7 +88,7 @@ print(sheets['B'][8].value)
 
 #time_file.save('/home/anton/repositories/timer/time_stat.xlsx')
 
-'''
+
 for row in ws.rows:
     for cell in row:
 '''
