@@ -3,17 +3,35 @@ from openpyxl import load_workbook
 from datetime import date 
 from datetime import datetime
 
-fn = '/home/anton/repositories/timer/time_stat.xlsx'
-
-wb = load_workbook(fn)
-ws = wb['data']
-ws['A5'] = 'Hello World!'
-
-wb.save(fn)
-wb.close()
+time_work_plane = [1,23]
+time_studies_plane = [2, 2]
+time_rest_plane = [3, 45]
 
 
+# Запись даты и необходимого времени
+def date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane):
+    time_data = '/home/anton/repositories/timer/time_stat.xlsx'
 
+    file_data = load_workbook(time_data)
+    file_page = file_data['data']
+
+    work_plane_minutes = time_work_plane[0] * 60 + time_work_plane[1]
+    studies_plane_minutes = time_studies_plane[0] * 60 + time_studies_plane[1]
+    rest_plane_minutes = time_rest_plane[0] * 60 + time_rest_plane[1]
+    
+    date_place = len(file_page['A'])
+
+    if file_page['A' + str(date_place)].value != datetime.today().strftime('%Y-%m-%d'):
+        file_page['A' + str(date_place + 1)].value = datetime.today().strftime('%Y-%m-%d')
+        file_page['B' + str(date_place + 1)] = studies_plane_minutes
+        file_page['D' + str(date_place + 1)] = work_plane_minutes
+        file_page['F' + str(date_place + 1)] = rest_plane_minutes
+
+    file_data.save(time_data)
+    file_data.close()
+
+
+date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane)
 
 
 '''

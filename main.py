@@ -3,6 +3,8 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 from datetime import datetime
 from threading import Timer
+from excel_main import date_and_time_wrote
+
 
 Form, Window = uic.loadUiType("timer_GUI_2.ui")
 app = QApplication([])
@@ -17,6 +19,12 @@ work_time_pass = 0
 studies_time_pass = 0
 rest_time_pass = 0
 
+time_work_plane = [int(form.timeEdit.time().toString('hh')),
+                   int(form.timeEdit.time().toString('mm'))]
+time_studies_plane = [int(form.timeEdit_2.time().toString('hh')),
+                      int(form.timeEdit_2.time().toString('mm'))]
+time_rest_plane = [int(form.timeEdit_3.time().toString('hh')),
+                   int(form.timeEdit_3.time().toString('mm'))]
 
 def now_time():
     return [datetime.now().time().hour, datetime.now().time().minute]
@@ -43,7 +51,6 @@ def rest_button_on():
 def on_click_work():  # Кнопка "Рабочее время"
     global start_time, time_work_plane
     work_button_on()
-    time_work_plane = [int(form.timeEdit.time().toString('hh')), int(form.timeEdit.time().toString('mm'))]
     start_time = now_time()
 
     if work_time_pass != 0:
@@ -61,8 +68,6 @@ def on_click_work():  # Кнопка "Рабочее время"
 def on_click_studies():  # Кнопка "Учебное время"
     global start_time, time_studies_plane
     studies_button_on()
-    time_studies_plane = [int(form.timeEdit_2.time().toString('hh')),
-                          int(form.timeEdit_2.time().toString('mm'))]
     start_time = now_time()
 
     if studies_time_pass != 0:
@@ -79,8 +84,6 @@ def on_click_studies():  # Кнопка "Учебное время"
 def on_click_rest():  # Кнопка "Отдых"
     global start_time, time_rest_plane
     rest_button_on()
-    time_rest_plane = [int(form.timeEdit_3.time().toString('hh')),
-                       int(form.timeEdit_3.time().toString('mm'))]
     start_time = now_time()
 
     if rest_time_pass != 0:
@@ -164,27 +167,8 @@ form.pushButton.clicked.connect(on_click_work)
 form.pushButton_2.clicked.connect(on_click_studies)
 form.pushButton_3.clicked.connect(on_click_rest)
 
+date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane)
 
-#form.tabWidget.tabBarClicked.connect(print_qt)
-print(form.tabWidget.tabBarClicked)
-
-def print_qt():
-    print('WORK!')
-
-#if form.tab_2.isVisible():
-    #print_qt()
-
-
-form.tabWidget.tabBarClicked.connect(print_qt) # клик по вкладкам
-
-'''
-def print_qt():
-    print('WORK!')
-
-
-if form.tab_2.isVisible():
-    print_qt()
-
-'''
+#form.tabWidget.tabBarClicked.connect(print_qt) # клик по вкладкам
 
 app.exec_()
