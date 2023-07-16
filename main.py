@@ -3,7 +3,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 from datetime import datetime
 from threading import Timer
-from excel_main import date_and_time_wrote
+from excel_main import date_and_time_wrote, date_position, persent_pass
 
 
 Form, Window = uic.loadUiType("timer_GUI_2.ui")
@@ -68,7 +68,7 @@ def on_click_work():  # Кнопка "Рабочее время"
 
 
 def on_click_studies():  # Кнопка "Учебное время"
-    global start_time, time_studies_plane
+    global start_time, time_studies_ppersent_passlane
     studies_button_on()
     start_time = now_time()
 
@@ -123,6 +123,9 @@ def counter_work_time():
     start_work_minutes = start_time[0] * 60 + start_time[1]
     work_time_pass = now_time_minytes - start_work_minutes
     work_persent = work_time_pass * 100 / work_plane_minutes
+
+    persent_pass(work_persent, 'work')
+
     if work_persent > 100:
         form.pushButton.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_work.cancel()

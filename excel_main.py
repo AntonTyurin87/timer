@@ -1,11 +1,23 @@
-import openpyxl, os, datetime, re
+import openpyxl, os, datetime
 from openpyxl import load_workbook
-from datetime import date 
 from datetime import datetime
 
-time_work_plane = [1,23]
-time_studies_plane = [2, 2]
-time_rest_plane = [3, 45]
+#time_work_plane = [1,23]
+#time_studies_plane = [2, 2]
+#time_rest_plane = [3, 45]
+
+# Дата и предустановки
+def date_position():
+    global date_place, file_page, file_data, time_data
+
+    time_data = '/home/anton/repositories/timer/time_stat.xlsx'
+
+    file_data = load_workbook(time_data)
+    file_page = file_data['data']
+    
+    date_place = len(file_page['A'])
+
+    #file_data.close()
 
 
 # Запись даты и необходимого времени
@@ -23,21 +35,41 @@ def date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane):
 
     if file_page['A' + str(date_place)].value != datetime.today().strftime('%Y-%m-%d'):
         file_page['A' + str(date_place + 1)].value = datetime.today().strftime('%Y-%m-%d')
-        file_page['B' + str(date_place + 1)] = studies_plane_minutes
-        file_page['D' + str(date_place + 1)] = work_plane_minutes
+        file_page['B' + str(date_place + 1)] = work_plane_minutes
+        file_page['D' + str(date_place + 1)] = studies_plane_minutes
         file_page['F' + str(date_place + 1)] = rest_plane_minutes
 
     elif file_page['A' + str(date_place)].value == datetime.today().strftime('%Y-%m-%d'):
-        file_page['B' + str(date_place)] = studies_plane_minutes
-        file_page['D' + str(date_place)] = work_plane_minutes
+        file_page['B' + str(date_place)] = work_plane_minutes
+        file_page['D' + str(date_place)] = studies_plane_minutes
         file_page['F' + str(date_place)] = rest_plane_minutes
 
     file_data.save(time_data)
     file_data.close()
 
 
-date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane)
+#date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane)
 
+
+# Запись количества прошедших процентов
+def persent_pass(persent, action_tipe):
+    string_werb = ''
+    if action_tipe == 'work':
+        string_werb = 'C'
+        date_position()
+        file_page['C' + str(date_place + 1)] = persent
+        file_data.save(time_data)
+        file_data.close()
+
+    elif action_tipe == 'studies':
+        string_werb = 'E'
+    elif action_tipe == 'rest':
+        string_werb = 'G'
+        
+
+
+
+    
 
 '''
 if os.path.isfile('/home/anton/repositories/timer/time_stat.xlsx'):
