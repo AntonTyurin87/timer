@@ -27,6 +27,11 @@ def date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane):
         file_page['D' + str(date_place + 1)] = work_plane_minutes
         file_page['F' + str(date_place + 1)] = rest_plane_minutes
 
+    elif file_page['A' + str(date_place)].value == datetime.today().strftime('%Y-%m-%d'):
+        file_page['B' + str(date_place)] = studies_plane_minutes
+        file_page['D' + str(date_place)] = work_plane_minutes
+        file_page['F' + str(date_place)] = rest_plane_minutes
+
     file_data.save(time_data)
     file_data.close()
 
