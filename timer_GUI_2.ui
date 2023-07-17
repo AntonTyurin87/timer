@@ -147,7 +147,7 @@ background-color: rgb(222, 221, 218);
 </string>
       </property>
       <property name="text">
-       <string>Старт/Финиш</string>
+       <string>Старт/Стоп</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_3">

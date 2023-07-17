@@ -3,8 +3,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication
 from datetime import datetime
 from threading import Timer
-from excel_main import date_and_time_wrote, date_position, persent_pass
-
+from excel_main import date_and_time_wrote, date_position, persent_pass, five_days_time, twentyone_days_time
 
 Form, Window = uic.loadUiType("timer_GUI_2.ui")
 app = QApplication([])
@@ -12,8 +11,6 @@ window = Window()
 form = Form()
 form.setupUi(window)
 window.show()
-
-counter_start = 1  # Счетчик для нажатия на кнопку "Старт/Финиш"
 
 work_time_pass = 0
 studies_time_pass = 0
@@ -102,18 +99,14 @@ def on_click_rest():  # Кнопка "Отдых"
 def on_click_button_4():  # Кнопка Старт/Финиш
     global counter_start
     
-    if counter_start == 0:
-        form.pushButton_4.setStyleSheet("background-color: rgb(51, 209, 122)")
-        counter_start = 1
-    elif counter_start == 1:
-        form.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);")
-        form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
-        form.pushButton_2.setStyleSheet("background-color: rgb(237, 51, 59);")
-        form.pushButton.setStyleSheet("background-color: rgb(237, 51, 59);")
-        t_work.cancel()
-        t_studies.cancel()
-        t_rest.cancel()
-        counter_start = 0
+    form.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);")
+    form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
+    form.pushButton_2.setStyleSheet("background-color: rgb(237, 51, 59);")
+    form.pushButton.setStyleSheet("background-color: rgb(237, 51, 59);")
+
+    t_work.cancel()
+    t_studies.cancel()
+    t_rest.cancel()
 
 
 def counter_work_time():
@@ -141,6 +134,9 @@ def counter_studies_time():
     start_studies_minutes = start_time[0] * 60 + start_time[1]
     studies_time_pass = now_time_minytes - start_studies_minutes
     studies_persent = studies_time_pass * 100 / studies_plane_minutes
+
+    persent_pass(studies_persent, 'studies')
+
     if studies_persent > 100:
         form.pushButton_2.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_studies.cancel()
@@ -156,6 +152,9 @@ def counter_rest_time():
     start_rest_minutes = start_time[0] * 60 + start_time[1]
     rest_time_pass = now_time_minytes - start_rest_minutes
     rest_persent = rest_time_pass * 100 / rest_plane_minutes
+
+    persent_pass(rest_persent, 'rest')   
+
     if rest_persent >= 100:
         form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_rest.cancel()
@@ -164,9 +163,37 @@ def counter_rest_time():
     t_rest.start()
 
 
-t_work = Timer(10, counter_work_time)
-t_studies = Timer(10, counter_studies_time)
-t_rest = Timer(10, counter_rest_time)
+def five_days():
+    if five_days_time() == 'no_data':
+        form.lineEdit.setText('мало данных')
+        form.lineEdit_2.setText('мало данных')
+        form.lineEdit_3.setText('мало данных')
+    else:
+        form.lineEdit.setText(' ' + str(five_days_time()[0][0]) + ' минут')
+        form.progressBar_5.setProperty("value", int(five_days_time()[0][1]))
+        form.lineEdit_2.setText(' ' + str(five_days_time()[1][0]) + ' минут')
+        form.progressBar_4.setProperty("value", int(five_days_time()[1][1]))
+        form.lineEdit_3.setText(' ' + str(five_days_time()[2][0]) + ' минут')
+        form.progressBar_6.setProperty("value", int(five_days_time()[2][1]))
+
+
+def twentyone_days():
+    if twentyone_days_time() == 'no_data':
+        form.lineEdit_4.setText('мало данных')
+        form.lineEdit_6.setText('мало данных')
+        form.lineEdit_5.setText('мало данных')
+    else:
+        form.lineEdit_4.setText(' ' + str(twentyone_days_time()[0][0]) + ' минут')
+        form.progressBar_9.setProperty("value", int(twentyone_days_time()[0][1]))
+        form.lineEdit_6.setText(' ' + str(twentyone_days_time()[1][0]) + ' минут')
+        form.progressBar_7.setProperty("value", int(twentyone_days_time()[1][1]))
+        form.lineEdit_5.setText(' ' + str(twentyone_days_time()[2][0]) + ' минут')
+        form.progressBar_8.setProperty("value", int(twentyone_days_time()[2][1]))
+
+
+t_work = Timer(23, counter_work_time)
+t_studies = Timer(23, counter_studies_time)
+t_rest = Timer(23, counter_rest_time)
 
 form.pushButton_4.clicked.connect(on_click_button_4)
 form.pushButton.clicked.connect(on_click_work)
@@ -174,7 +201,10 @@ form.pushButton_2.clicked.connect(on_click_studies)
 form.pushButton_3.clicked.connect(on_click_rest)
 
 date_and_time_wrote(time_work_plane, time_studies_plane, time_rest_plane)
+date_position()
 
-#form.tabWidget.tabBarClicked.connect(print_qt) # клик по вкладкам
+form.tabWidget.tabBarClicked.connect(five_days) # клик по вкладкам
+form.tabWidget.tabBarClicked.connect(twentyone_days)
+
 
 app.exec_()
