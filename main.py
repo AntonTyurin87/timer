@@ -97,8 +97,6 @@ def on_click_rest():  # Кнопка "Отдых"
 
 
 def on_click_button_4():  # Кнопка Старт/Финиш
-    global counter_start
-    
     form.pushButton_4.setStyleSheet("background-color: rgb(237, 51, 59);")
     form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
     form.pushButton_2.setStyleSheet("background-color: rgb(237, 51, 59);")
@@ -119,11 +117,11 @@ def counter_work_time():
 
     persent_pass(work_persent, 'work')
 
-    if work_persent > 100:
+    if work_persent >= 100:
         form.pushButton.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_work.cancel()
     form.progressBar.setProperty("value", work_persent)
-    t_work = Timer(10, counter_work_time)
+    t_work = Timer(23, counter_work_time)
     t_work.start()
 
 
@@ -137,11 +135,11 @@ def counter_studies_time():
 
     persent_pass(studies_persent, 'studies')
 
-    if studies_persent > 100:
+    if studies_persent >= 100:
         form.pushButton_2.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_studies.cancel()
     form.progressBar_2.setProperty("value", studies_persent)
-    t_studies = Timer(10, counter_studies_time)
+    t_studies = Timer(23, counter_studies_time)
     t_studies.start()
 
 
@@ -159,7 +157,7 @@ def counter_rest_time():
         form.pushButton_3.setStyleSheet("background-color: rgb(237, 51, 59);")
         t_rest.cancel()
     form.progressBar_3.setProperty("value", rest_persent)
-    t_rest = Timer(10, counter_rest_time)
+    t_rest = Timer(23, counter_rest_time)
     t_rest.start()
 
 
